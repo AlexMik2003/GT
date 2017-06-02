@@ -1,0 +1,23 @@
+{% if flash.getMessage("error") %}
+    <div class="alert alert-danger auth_flash" role="alert">
+        {{ flash.getMessage("error") | first }}
+    </div>
+{% endif %}
+
+
+
+{% if flash.getMessage("info") %}
+    <span style="color: blue;">{{ flash.getMessage("info") | first }}</span>
+{% endif %}
+
+{% if flash.getMessage("warning") %}
+    <span style="color: orange;">{{ flash.getMessage("warning") | first }}</span>
+{% endif %}
+
+{% if flash.getMessage("success") %}
+    <span style="color: green;">{{ flash.getMessage("success") | first }}</span>
+{% endif %}
+
+{% if flash.getMessage("danger") %}
+    <span style="color: red;">{{ flash.getMessage("danger") | first }}</span>
+{% endif %}

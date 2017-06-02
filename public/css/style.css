@@ -1,0 +1,291 @@
+html, body{
+    min-height: 100%;
+    position: relative;
+
+}
+
+
+.header{
+    padding-top: 20px;
+    border-bottom: 1px solid #ccc;
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    top:0;
+}
+
+#logo{
+    padding-left: 50px;
+    margin-top: 0;
+    font-weight: bold;
+    font-style: italic;
+    color: #1933ec;
+    font-family: "Courier 10 Pitch";
+    text-decoration: underline;
+}
+
+.logo{
+    padding-left: 130px;
+}
+
+#logout{
+    color: #1933ec;
+    font-weight: bold;
+}
+
+.notice{
+    padding-right: 100px;
+    padding-top: 30px;
+}
+
+.left{
+    border-right: 1px solid #ccc;
+    width: 350px;
+}
+
+.wrapper{
+    margin-top: 100px;
+}
+
+.name{
+    float: left;
+    color: #1933ec;
+    font-weight: bold;
+    font-style: italic;
+    padding-top: 35px;
+}
+
+.you{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.bender{
+    text-align:center;
+}
+
+#lin{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.auth{
+    margin-top: 150px;
+}
+
+.auth_flash{
+    text-align: center;
+    font-weight: bold;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #ccc;
+}
+
+#footer {
+    text-align: center;
+    color: #1933ec;
+    padding-top: 20px;
+}
+
+.you{
+    color: #1933ec;
+    font-weight: bold;
+    font-style: italic;
+    height: 55px;
+    border-bottom:1px solid #ccc;
+}
+
+.you >span{
+    border:2px solid #ccc;
+    border-radius: 10px;
+}
+
+#userpic{
+    float: left;
+    margin: 0 5px 5px 15px;
+}
+
+.body_header{
+    height: 65px;
+}
+
+.inform{
+    font-weight: bold;
+    color: #1933ec;
+    text-align: left;
+    height: 50%;
+    left: 30px;
+    padding-top: 10px;
+
+}
+
+.log{
+    text-align: right;
+    height: 50%;
+    border-top:1px solid #ccc;
+    font-weight: bold;
+    color: #1933ec;
+    padding-top: 10px;
+}
+
+.flash{
+    float: left;
+    font-weight: bold;
+    height: 50%;
+    padding-top: 10px;
+}
+
+.menu {
+    font-size: 13px;
+    margin-top: -10px;
+}
+
+.submenu {
+    font-size: 12px;
+}
+
+#submenu {
+    color: #1933ec;
+    font-weight: bold;
+}
+
+.dataTables_length{
+    margin-left: 20px;
+}
+
+.dataTables_filter{
+    margin-right: 20px;
+}
+
+.dataTables_info{
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.dataTables_paginate{
+    margin-right: 20px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+table.dataTable thead th {
+    position: relative;
+    background-image: none !important;
+}
+
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    display: block;
+}
+
+table.dataTable thead th.sorting:after {
+    content: "\f0dc";
+    color: #ddd;
+    font-size: 0.8em;
+    padding-top: 0.12em;
+}
+table.dataTable thead th.sorting_asc:after {
+    content: "\f0de";
+}
+table.dataTable thead th.sorting_desc:after {
+    content: "\f0dd";
+}
+
+.highlight {
+    font-weight: bold
+}
+
+.user_action{
+    float: right;
+    font-size: 13px;
+    margin-right: 10px;
+    margin-top:-10px;
+}
+
+#act_btn{
+    font-weight: bold;
+    width: 70px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#user_check, #dev_check, #ip_check,#client_act,#client_sla{
+    width: 50px;
+    text-align: center;
+}
+
+#user_admin, #user_status, #dev_status,#ip_type,#ip_class,
+#peer_as,#peer_vlan{
+    width: 150px;
+}
+
+#user_login,#ip_addr,
+#client_name,#client_it_name,#client_address,#client_manager,#client_net,#client_action{
+    width: 250px;
+}
+
+#user_name,#dev_name,#area_name,#ip_hosts,#ip_net{
+    width: 400px;
+}
+
+.device_link, .device_link:hover,
+.network_link, .network_link:hover{
+    font-weight: bold;
+    color: #1933ec;
+    float: left;
+    text-decoration: none;
+}
+
+#port_href,#vlan_href{
+    color: #000;
+    text-decoration: none;
+}
+
+.vlans{
+
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-collapse: separate;
+
+}
+
+.vlan_td
+{
+    width: 6%;
+    height: 35px;
+}
+
+.ips{
+
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+    border-collapse: separate;
+
+}
+
+#map{
+    height: 700px;
+}
+
+.bold-font {
+    font-weight: bold;
+}
+
+.large-font {
+    font-size: 15px;
+}
+
+.darkblue-font {
+    color: darkblue;
+}
+
+

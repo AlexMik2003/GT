@@ -1,0 +1,16 @@
+{%  extends "app.twig" %}
+
+  {% block page %}
+    <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <b>Log</b>
+        </div>
+        <div class="panel-body">
+            {% for item in log %}
+                <samp><b>{{ item }}</b></samp><br>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}

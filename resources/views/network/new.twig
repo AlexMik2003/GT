@@ -1,0 +1,44 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Network Management [new]</b>
+            </div>
+            <div class="panel-body">
+                <form action="{{ path_for("network.new") }}" method="post" class="form-horizontal" id="network_form">
+                    <div class="form-group{{ errors.ip_name ? ' has error' : '' }}">
+                        <label for="ip_name" class="col-sm-2 control-label">Name: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="ip_name" name="ip_name" value="{{ old.ip_name }}" data-validate="required">
+                            {% if errors.ip_name %}
+                                <span class="help-block">{{ errors.ip_name | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.ip_net ? ' has error' : '' }}">
+                        <label for="ip_net" class="col-sm-2 control-label">Network: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="ip_net" name="ip_net" value="{{ old.ip_net }}" data-validate="required"/>
+                            {% if errors.ip_net %}
+                                <span class="help-block">{{ errors.ip_net | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.ip_mask ? ' has error' : '' }}">
+                        <label for="ip_mask" class="col-sm-2 control-label">Mask: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="ip_mask" name="ip_mask" value="{{ old.ip_mask }}" data-validate="required"/>
+                            {% if errors.ip_mask %}
+                                <span class="help-block">{{ errors.ip_mask | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><strong>Create network</strong></button>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

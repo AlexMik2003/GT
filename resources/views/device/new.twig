@@ -1,0 +1,80 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Device Management [new]</b>
+            </div>
+            <div class="panel-body">
+                <form action="{{ path_for("device.new") }}" method="post" class="form-horizontal">
+                    <div class="form-group{{ errors.device_ip ? ' has error' : '' }}">
+                        <label for="device_ip" class="col-sm-2 control-label">IP address: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="device_ip" name="device_ip" value="{{ old.device_ip }}" data-validate="required">
+                            {% if errors.device_ip %}
+                                <span class="help-block">{{ errors.device_ip | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.device_name ? ' has error' : '' }}">
+                        <label for="device_name" class="col-sm-2 control-label">Device Name: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="device_name" name="device_name" value="{{ old.device_name }}" data-validate="required">
+                            {% if errors.device_name %}
+                                <span class="help-block">{{ errors.device_name | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.device_community ? ' has error' : '' }}">
+                        <label for="device_community" class="col-sm-2 control-label">SNMP Community: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="device_community" name="device_community" value="{{ old.device_community }}" data-validate="required">
+                            {% if errors.device_community %}
+                                <span class="help-block">{{ errors.device_community | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.device_vendor ? ' has error' : '' }}">
+                        <label for="device_vendor" class="col-sm-2 control-label">Device Vendor: </label>
+                            <select id="device_vendor" name="device_vendor" class="col-sm-6">
+                                <option selected disabled>Choose vendor:</option>
+                                {% for item in model %}
+                                    <option>{{ item.vendor|upper }}</option>
+                                {% endfor %}
+                            </select><br>
+                            {% if errors.device_vendor %}
+                                <span class="help-block">{{ errors.device_vendor | first }}</span>
+                            {%  endif %}
+                    </div>
+                    <div class="form-group{{ errors.device_model ? ' has error' : '' }}">
+                        <label for="device_model" class="col-sm-2 control-label">Device Model: </label>
+                            <select id="device_model" name="device_model" class="col-sm-6">
+                                <option selected disabled>Choose model:</option>
+                                {% for value in model %}
+                                    <option>{{ value.model|upper }}</option>
+                                {% endfor %}
+                            </select><br>
+                            {% if errors.device_model %}
+                                <span class="help-block">{{ errors.device_model | first }}</span>
+                            {%  endif %}
+                    </div>
+                    <div class="form-group{{ errors.device_area ? ' has error' : '' }}">
+                        <label for="device_area" class="col-sm-2 control-label">Device Area: </label>
+                            <select id="device_area" name="device_area" class="col-sm-6">
+                                <option selected disabled>Choose area:</option>
+                                {% for item in area %}
+                                    <option>{{ item|upper }}</option>
+                                {% endfor %}
+                            </select><br>
+                            {% if errors.device_area %}
+                                <span class="help-block">{{ errors.device_area | first }}</span>
+                            {%  endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary"><strong>Create device</strong></button>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

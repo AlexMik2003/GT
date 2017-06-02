@@ -1,0 +1,66 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>{{ device.name }} [ {{ ip_addr }} ]</b>
+            </div>
+            <table>
+                <tr>
+                    <td style="width: 75%">
+                        <table class="table table-bordered deviceInform">
+                            <thead>
+                            <tr>
+                                <td colspan="2" class="info"><strong>SNMP Information:</strong></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td style="width: 25%; padding-left: 50px;"><div id="gauge"></div></td>
+                </tr>
+            </table>
+            <div class="panel-heading">
+                <b>Ports Information</b>
+            </div>
+            <table class="table table-bordered devicePorts">
+                {% set cols = 8 %}
+                {%  for port in ports %}
+                    {% if loop.index0 % cols == 0 %}
+                        <tr>
+                    {% endif %}
+                        {% if port.operStatus == 1 %}
+                            {% set bc = "lime" %}
+                        {% elseif port.operStatus == 2 %}
+                            {% set bc = "red" %}
+                        {% endif %}
+                        <td style="text-align:center; background-color: {{ bc }}">
+                            <strong><a id='port_href' href="{{ path_for("deviceInform.interface",{"id": device.id,"port":port.ports_id}) }}">{{ port.alias }}</a></strong>
+                        </td>
+                    {% if loop.index0 % cols == cols -1 %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table><br>
+            <div class="panel-heading">
+                <b>Vlans Information</b>
+            </div>
+            <table class="table table-bordered deviceVlans">
+                {% set cols = 8 %}
+                {%  for vlan in vlans %}
+                    {% if loop.index0 % cols == 0 %}
+                        <tr>
+                    {% endif %}
+                    <td style="text-align:center; background-color: yellow;">
+                        <strong><a id='vlan_href' href="">{{ vlan.vlan_id }}<br>{{ vlan.desc | upper }}</a></strong>
+                    </td>
+                    {% if loop.index0 % cols == cols -1 %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+
+{% endblock %}

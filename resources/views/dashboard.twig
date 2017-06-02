@@ -1,0 +1,34 @@
+{%  extends "app.twig" %}
+
+  {% block page %}
+    <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <b>Dashboard</b>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <tr>
+                    <td class="info" style="width: 50%;"><strong>Summary Information</strong></td>
+                    <td  class="info" style="width: 50%;"><strong>Top 5 hosts with the worst ping response</strong></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="table">
+                            {% for key,value in data %}
+                                <tr>
+                                    <td style="width: 60%; color: darkblue; font-weight: bold;">{{ key|capitalize }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                    <td>
+                        <div id="Info"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

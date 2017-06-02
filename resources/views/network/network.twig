@@ -1,0 +1,33 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <form action="{{ path_for("network.action") }}" method="post" id="network_form">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Network Management</b>
+                <div class="nav user_action">
+                    <button class="btn btn-default navbar-btn" id="act_btn" name="action" value="add">Add</button>
+                    <button class="btn btn-default navbar-btn" id="act_btn" name="action" value="del">Delete</button>
+                </div>
+            </div>
+            <table class="table table-bordered dataTable display" id="ip">
+                <thead>
+                <tr class="info">
+                    <th id="ip_net">Network</th>
+                    <th id="ip_hosts">Name</th>
+                    <th id="ip_class">Class</th>
+                    <th id="ip_type">Type</th>
+                    <th id="ip_count">Hosts Count </th>
+                    <th id="ip_use">Free/Used, %</th>
+                    <th id="ip_check"><input type="checkbox" value="" name="check_all_net" id="check_all_net"></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+            {{ csrf.field | raw }}
+        </form>
+    </div>
+{% endblock %}

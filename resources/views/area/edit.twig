@@ -1,0 +1,93 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Area Management [edit]</b>
+            </div>
+            <div class="panel-body">
+                <form action="{{ path_for("area.edit",{"id": area.id}) }}" method="post" class="form-horizontal" id="area_form">
+                    <div class="form-group{{ errors.area_name ? ' has error' : '' }}">
+                        <label for="area_name" class="col-sm-2 control-label">Area: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="area_name" name="area_name" value="{{ area.area }}" data-validate="required">
+                            {% if errors.area_name %}
+                                <span class="help-block">{{ errors.area_name | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.address ? ' has error' : '' }}">
+                        <label for="address" class="col-sm-2 control-label">Address: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="address" name="address" value="{{ area.address }}" data-validate="required">
+                            {% if errors.address %}
+                                <span class="help-block">{{ errors.address| first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.city ? ' has error' : '' }}">
+                        <label for="city" class="col-sm-2 control-label">City: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="city" name="city" value="{{ area.city }}" data-validate="required">
+                            {% if errors.city %}
+                                <span class="help-block">{{ errors.city| first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.country ? ' has error' : '' }}">
+                        <label for="country" class="col-sm-2 control-label">Country: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="country" name="country" value="{{ area.country }}" data-validate="required">
+                            {% if errors.country %}
+                                <span class="help-block">{{ errors.country| first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments" class="col-sm-2 control-label">Comments: </label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id="comments" name="comments" data-validate="required">{{ area.comments }}</textarea>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="contacts">
+                        {% for item in area.contacts %}
+                        <h4><u>Contacts</u></h4>
+                        <div class="form-group{{ errors.contacts_name ? ' has error' : '' }}">
+                            <label for="contacts_name" class="col-sm-2 control-label">Name: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="contacts_name" name="contacts_name[]" value="{{ item.name }}" data-validate="required"/>
+                                {% if errors.contacts_name %}
+                                    <span class="help-block">{{ errors.contacts_name| first }}</span>
+                                {%  endif %}
+                            </div>
+                        </div>
+                        <div class="form-group{{ errors.contacts_phone ? ' has error' : '' }}">
+                            <label for="contacts_phone" class="col-sm-2 control-label">Phone: </label>
+                            <div class="col-sm-6">
+                                <input type="tel" class="form-control" id="contacts_phone" name="contacts_phone[]" value="{{ item.phone }}" data-validate="required"/>
+                                {% if errors.contacts_phone %}
+                                    <span class="help-block">{{ errors.contacts_phone| first }}</span>
+                                {%  endif %}
+                            </div>
+                        </div>
+                        <div class="form-group{{ errors.contacts_mail ? ' has error' : '' }}">
+                            <label for="contacts_mail" class="col-sm-2 control-label">Email: </label>
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" id="contacts_mail" name="contacts_mail[]" value="{{ item.mail }}" data-validate="required"/>
+                                {% if errors.contacts_mail %}
+                                    <span class="help-block">{{ errors.contacts_mail| first }}</span>
+                                {%  endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" id="hide_contacts" name="hide_contacts" value="1">
+                    <button type="button" class="btn btn-info" id="add_contacts"><strong>Add contacts</strong></button>
+                    <button type="submit" class="btn btn-primary"><strong>Update area</strong></button>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

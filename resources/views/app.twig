@@ -1,0 +1,32 @@
+{% include "layouts/header.twig" %}
+
+<div class="container-fluid">
+    {% include "partial/header.twig" %}
+    <div class="row wrapper">
+        <div class="col-md-1 left">
+            <div class="row">
+                <h3 class="you"><span>{{ user.users['login'] }}</span>
+                    <img src="{{ [base_url(),user.userpic]|join() }}" alt="userpic" id="userpic"/>
+               </h3>
+            </div>
+            <div class="row">
+                {% include "partial/menu.twig" %}
+            </div>
+            <div class="row bender">
+                <img src="{{ base_url() }}/images/bender.png" alt="lin" id="lin"/>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="row body_header">
+                <div class="col-md-3 inform">INFORMATION MESSAGE:</div>
+                <div class="col-md-9 flash" role="alert">{% include "partial/flash.twig" %}</div>
+                <div class="col-md-12 log">{{ logMessage }}</div>
+            </div>
+            {% block page %}
+            {% endblock %}
+        </div>
+    </div>
+    {% include "partial/footer.twig" %}
+</div>
+
+{% include "layouts/footer.twig"  %}

@@ -1,0 +1,100 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Clients Management [edit]</b>
+            </div>
+            <div class="panel-body">
+                <form action="{{ path_for("clients.edit",{"id": client.id}) }}" method="post" class="form-horizontal" id="client_form">
+                    <div class="form-group{{ errors.act_number ? ' has error' : '' }}">
+                        <label for="act_number" class="col-sm-2 control-label">Act number: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="act_number" name="act_number" value="{{ client.act_number }}" data-validate="required">
+                            {% if errors.act_number %}
+                                <span class="help-block">{{ errors.act_number | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.client_name ? ' has error' : '' }}">
+                        <label for="client_name" class="col-sm-2 control-label">Client Name: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="client_name" name="client_name" value="{{ client.client_name }}" data-validate="required">
+                            {% if errors.client_name %}
+                                <span class="help-block">{{ errors.client_name | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.client_it_name ? ' has error' : '' }}">
+                        <label for="client_it_name" class="col-sm-2 control-label">IT Name: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="client_it_name" name="client_it_name" value="{{ client.client_it_name }}" data-validate="required">
+                            {% if errors.client_it_name %}
+                                <span class="help-block">{{ errors.client_it_name | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.client_address ? ' has error' : '' }}">
+                        <label for="client_address" class="col-sm-2 control-label">Address: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="client_address" name="client_address" value="{{ client.client_address }}" data-validate="required">
+                            {% if errors.client_address %}
+                                <span class="help-block">{{ errors.client_address| first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.client_manager ? ' has error' : '' }}">
+                        <label for="client_manager" class="col-sm-2 control-label">Manager: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="client_manager" name="client_manager" value="{{ client.client_manager }}" data-validate="required">
+                            {% if errors.client_manager %}
+                                <span class="help-block">{{ errors.client_manager| first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="client_sla" class="col-sm-2 control-label">SLA: </label>
+                        <select id="client_sla" name="client_sla" class="col-sm-6">
+                            <option disabled>Choose client SLA level:</option>
+                            {% for i in 1..3 %}
+                                {% if i == client.client_sla %}
+                                    <option selected>{{ i }}</option>
+                                 {% else %}
+                                     <option>{{ i }}</option>
+                                 {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="panel-body" id="client_network">
+                        {% for item in clientNet %}
+                        <h4><u>Network</u></h4>
+                        <div class="form-group{{ errors.client_net ? ' has error' : '' }}">
+                            <label for="client_net" class="col-sm-2 control-label">Network: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="client_net" name="client_net[]" value="{{ item.net }}" data-validate="required"/>
+                                {% if errors.client_net %}
+                                    <span class="help-block">{{ errors.client_net| first }}</span>
+                                {%  endif %}
+                            </div>
+                        </div>
+                        <div class="form-group{{ errors.client_mask ? ' has error' : '' }}">
+                            <label for="client_mask" class="col-sm-2 control-label">Mask: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="client_mask" name="client_mask[]" value="{{ item.mask }}" data-validate="required"/>
+                                {% if errors.client_mask %}
+                                    <span class="help-block">{{ errors.client_mask| first }}</span>
+                                {%  endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" id="hide_clients_net" name="hide_clients_net" value="1">
+                    <button type="button" class="btn btn-info" id="add_net"><strong>Add network</strong></button>
+                    <button type="submit" class="btn btn-primary"><strong>Update client</strong></button>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

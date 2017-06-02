@@ -1,0 +1,41 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Vlans Management</b>
+            </div>
+            <table class="table table-bordered vlans">
+                {% set cols = 16 %}
+                {% for vlan in vlans %}
+                    {% if loop.index0 % cols == 0 %}
+                        <tr>
+                    {% endif %}
+                    {% if vlan.id == 1 or vlan.id == 10 %}
+                        {% set bc = "yellow" %}
+                    {% elseif  vlan.vlan is not empty%}
+                        {% set bc = "red" %}
+                    {% else %}
+                        {% set bc = "lime" %}
+                    {% endif %}
+                    <td class="vlan_td" style="background-color: {{ bc }}">{{ vlan.id }}<br>{{ vlan.vlan }}</td>
+                    {% if loop.index0 % cols == cols-1 %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+            <div class="col-xs-8 col-xs-offset-4">
+                {% if pagination.needed %}
+                    <ul class="pagination">
+                        {% for i in 1..pagination.lastpage %}
+                            <li class="{% if i == pagination.page %}active{% endif %}">
+                                <a href="{{ path_for('vlan.management',{"page": i }) }}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

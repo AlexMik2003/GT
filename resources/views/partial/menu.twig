@@ -1,0 +1,37 @@
+<div class="list-group menu">
+    <a href="{{ path_for("dashboard") }}" class="list-group-item list-group-item-info">
+        <img src="{{ base_url() }}/images/icon_dash.png"/>&emsp;<b>Dashboard</b>
+    </a>
+    <a href="{{ path_for("clients.management") }}" class="list-group-item list-group-item-info">
+        <img src="{{ base_url() }}/images/clients-blue.png"/>&emsp;<b>Clients</b>
+    </a>
+    <a href="{{ path_for("network.management") }}" class="list-group-item submenu">
+        <img src="{{ base_url() }}/images/arrow_blue.png"/>&nbsp;<span id="submenu">Network</span>
+    </a>
+    <a href="{{ path_for("vlan.management",{"page":1}) }}" class="list-group-item submenu">
+        <img src="{{ base_url() }}/images/arrow_blue.png"/>&nbsp;<span id="submenu">Vlans</span>
+    </a>
+    <a href="{{ path_for("peers.management") }}" class="list-group-item submenu">
+        <img src="{{ base_url() }}/images/arrow_blue.png"/>&nbsp;<span id="submenu">Peers</span>
+    </a>
+    <a href="{{ path_for("device.management") }}" class="list-group-item list-group-item-info">
+        <img src="{{ base_url() }}/images/switch-blue.png"/>&emsp;<b>Devices</b>
+    </a>
+    <a href="{{ path_for("area.management") }}" class="list-group-item list-group-item-info">
+        <img src="{{ base_url() }}/images/area-blue.png"/>&emsp;<b>Area</b>
+    </a>
+    <a href="{{ path_for("map.info") }}" class="list-group-item list-group-item-info">
+        <img src="{{ base_url() }}/images/map-blue.png"/>&emsp;<b>Map</b>
+    </a>
+    <a href="#" class="list-group-item list-group-item-info">
+        <img src="{{ base_url() }}/images/wiki-blue.png"/>&emsp;<b>Wiki</b>
+    </a>
+    {% if user.privilege == 1 %}
+        <a href="{{ path_for("user.management") }}" class="list-group-item list-group-item-info">
+            <img src="{{ base_url() }}/images/admin-blue.png"/>&emsp;<b>Users</b>
+        </a>
+        <a href="{{ path_for("log.info") }}" class="list-group-item list-group-item-info">
+            <img src="{{ base_url() }}/images/logfile.png"/>&emsp;<b>Log</b>
+        </a>
+    {% endif %}
+</div>

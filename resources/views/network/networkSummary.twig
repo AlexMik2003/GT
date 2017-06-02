@@ -1,0 +1,20 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Network Management [detail]</b>
+            </div>
+            <table class="table table-bordered ips">
+                {% for item in data %}
+                    <tr>
+                        {% for value in item %}
+                            <td style="background-color: {{ value.color }}">{{ value.ip }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

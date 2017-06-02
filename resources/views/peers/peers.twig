@@ -1,0 +1,28 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Peers Management</b>
+                <div class="nav user_action">
+                    <a href="{{ path_for("peers.new") }}" class="btn btn-default navbar-btn" role="button" id="act_btn">Add</a>
+                </div>
+            </div>
+            <table class="table table-bordered dataTable display" id="peers">
+                <thead>
+                <tr class="info">
+                    <th id="peer_name">Name</th>
+                    <th id="peer_it_name">IT Name</th>
+                    <th id="peer_net">Network</th>
+                    <th id="peer_as">AS</th>
+                    <th id="peer_vlan">Vlan</th>
+                    <th id="peer_action">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

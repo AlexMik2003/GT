@@ -1,0 +1,30 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Clients Management</b>
+                <div class="nav user_action">
+                    <a href="{{ path_for("clients.new") }}" class="btn btn-default navbar-btn" role="button" id="act_btn">Add</a>
+                </div>
+            </div>
+            <table class="table table-bordered dataTable display" id="clients">
+                <thead>
+                <tr class="info">
+                    <th id="client_act">Act Number</th>
+                    <th id="client_name">Name</th>
+                    <th id="client_it_name">IT Name</th>
+                    <th id="client_address">Address</th>
+                    <th id="client_net">Network</th>
+                    <th id="client_man">Manager</th>
+                    <th id="client_sla">SLA</th>
+                    <th id="client_action">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

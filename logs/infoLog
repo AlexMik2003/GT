@@ -1,0 +1,6 @@
+[2017-06-02 10:22:24] INFO LOGGER.INFO: Login user {"user":"admin","time":"2017-06-02 10:22:24","status":"Success"} []
+[2017-06-02 10:22:46] INFO LOGGER.INFO: Logout user {"user":"admin","time":"2017-06-02 10:22:46"} []
+[2017-06-02 10:56:53] INFO LOGGER.INFO: Login user admin status - Success [] []
+[2017-06-02 11:15:13] INFO LOGGER.INFO: Change area data {"area":"JSON","user":"admin"} []
+[2017-06-02 12:25:26] INFO LOGGER.INFO: Login user {"user":"admin","status":"Success"} []
+[2017-06-02 12:52:34] INFO LOGGER.INFO: Login user {"user":"admin","status":"Success"} []

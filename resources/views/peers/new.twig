@@ -1,0 +1,76 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Peers Management [new]</b>
+            </div>
+            <div class="panel-body">
+                <form action="{{ path_for("peers.new") }}" method="post" class="form-horizontal" id="peer_form">
+                    <div class="form-group{{ errors.peer_name ? ' has error' : '' }}">
+                        <label for="peer_name" class="col-sm-2 control-label">Name: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="peer_name" name="peer_name" value="{{ old.peer_name }}" data-validate="required">
+                            {% if errors.peer_name %}
+                                <span class="help-block">{{ errors.peer_name | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.peer_it_name ? ' has error' : '' }}">
+                        <label for="peer_it_name" class="col-sm-2 control-label">IT Name: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="peer_it_name" name="peer_it_name" value="{{ old.peer_it_name }}" data-validate="required">
+                            {% if errors.peer_it_name %}
+                                <span class="help-block">{{ errors.peer_it_name | first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.peer_as ? ' has error' : '' }}">
+                        <label for="peer_as" class="col-sm-2 control-label">AS: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="peer_as" name="peer_as" value="{{ old.peer_as }}" data-validate="required">
+                            {% if errors.peer_as %}
+                                <span class="help-block">{{ errors.peer_as| first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{{ errors.peer_vlan ? ' has error' : '' }}">
+                        <label for="peer_vlan" class="col-sm-2 control-label">Vlan: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="peer_vlan" name="peer_vlan" value="{{ old.peer_vlan }}" data-validate="required">
+                            {% if errors.peer_vlan %}
+                                <span class="help-block">{{ errors.peer_vlan| first }}</span>
+                            {%  endif %}
+                        </div>
+                    </div>
+                    <div class="panel-body" id="peer_network">
+                        <h4><u>Network</u></h4>
+                        <div class="form-group{{ errors.peer_net ? ' has error' : '' }}">
+                            <label for="peer_net" class="col-sm-2 control-label">Network: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="peer_net" name="peer_net[]" value="" data-validate="required"/>
+                                {% if errors.peer_net %}
+                                    <span class="help-block">{{ errors.peer_net| first }}</span>
+                                {%  endif %}
+                            </div>
+                        </div>
+                        <div class="form-group{{ errors.peer_mask ? ' has error' : '' }}">
+                            <label for="peer_mask" class="col-sm-2 control-label">Mask: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="peer_mask" name="peer_mask[]" value="" data-validate="required"/>
+                                {% if errors.peer_mask %}
+                                    <span class="help-block">{{ errors.peer_mask| first }}</span>
+                                {%  endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="hide_peers_net" name="hide_peers_net" value="1">
+                    <button type="button" class="btn btn-info" id="add_peer_net"><strong>Add network</strong></button>
+                    <button type="submit" class="btn btn-primary"><strong>Create peer</strong></button>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

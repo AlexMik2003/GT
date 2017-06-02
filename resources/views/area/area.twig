@@ -1,0 +1,28 @@
+{% extends "./app.twig" %}
+
+{% block page %}
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>Area Management</b>
+                <div class="nav user_action">
+                    <a href="{{ path_for("area.new") }}" class="btn btn-default navbar-btn" role="button" id="act_btn">Add</a>
+                </div>
+            </div>
+            <table class="table table-bordered dataTable display" id="area">
+                <thead>
+                <tr class="info">
+                    <th id="area_name">Area</th>
+                    <th id="address">Address</th>
+                    <th id="area_contacts">Contacts</th>
+                    <th id="dev_count">Device Count</th>
+                    <th id="comments">Comments</th>
+                    <th id="act_area">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
