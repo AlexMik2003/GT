@@ -14,9 +14,9 @@ return [
     "db" => [
         "driver" => "mysql",
         "host" => "localhost",
-        "database" => "netstat",
-        "username" => "netstat",
-        "password" => "Mon!t0r",
+        "database" => "database",
+        "username" => "user",
+        "password" => "password",
         "charset" => "utf8",
         "collation" => "utf8_unicode_ci",
         "prefix" => "",
